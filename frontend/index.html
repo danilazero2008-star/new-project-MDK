@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общее дело - платформа краудфандинга</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <button class="logo-btn">
+                <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L22 7v10c0 5.523-4.477 10-10 10S2 22.523 2 17V7l10-5z"></path>
+                </svg>
+                <span class="logo-text">Общее дело</span>
+            </button>
+            <nav class="nav">
+                <button class="nav-link" data-nav="projects">Проекты</button>
+                <button class="nav-link" data-nav="about">О нас</button>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn-login">Vhod</button>
+                <button class="btn-register">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Pages Container -->
+    <main>
+        <!-- Homepage / Hero -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="container hero-content">
+                    <h1>Поддержите проекты, которые вам важны</h1>
+                    <p class="hero-subtitle">Поддержите инновационные проекты или получите финансирование для своей идеи</p>
+                    <button class="btn-cta" onclick="navigateTo('projects')">Обзорные проекты</button>
+                </div>
+            </section>
+
+            <!-- Statistics -->
+            <section class="statistics">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Вместе мы уже многого достигли</h2>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon stat-icon-orange">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5h16M6 12.5h12M6 5.5h12"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Всего проектов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon stat-icon-blue">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Собрано рублей</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon stat-icon-green">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Поддерживающих</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon stat-icon-purple">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Пользователей</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Projects -->
+            <section class="projects-section">
+                <div class="container">
+                    <h2>Выбранные проекты</h2>
+                    <div class="projects-grid" id="featured-projects">
+                        <!-- Projects will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Projects Page -->
+        <div id="projects" class="page">
+            <section class="hero hero-blue">
+                <div class="container">
+                    <div class="search-container">
+                        <div class="search-box">
+                            <div class="search-input-wrapper">
+                                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                                <input type="text" id="search-input" class="search-input" placeholder="Поиск проектов...">
+                            </div>
+                            <div class="sort-wrapper">
+                                <svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="12 3 20 9 12 15 4 9 12 3"></polyline>
+                                </svg>
+                                <select id="sort-select" class="sort-select">
+                                    <option value="popular">По популярности</option>
+                                    <option value="new">Новые</option>
+                                    <option value="ending">Заканчивающиеся</option>
+                                </select>
+                            </div>
+                            <button class="btn-search" onclick="performSearch()">Поиск</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects-section">
+                <div class="container">
+                    <div class="projects-grid" id="projects-grid">
+                        <!-- Projects will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <section class="hero hero-green">
+                <div class="container hero-content">
+                    <h1>О платформе</h1>
+                    <p class="hero-subtitle">"Общее дело" - это платформа краудфандинга для поддержки новаторских проектов</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>О нас</h3>
+                    <div class="footer-logo">
+                        <span>Общее дело</span>
+                    </div>
+                    <p class="footer-description">Платформа краудфандинга для вощитения инноваций в России</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Все проекты</a></li>
+                        <li><a href="#">О платформе</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <div class="footer-contacts">
+                        <p>Email: info@obshchedelo.ru</p>
+                        <p>Phone: +7 (800) 123-45-67</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Общее дело. Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
